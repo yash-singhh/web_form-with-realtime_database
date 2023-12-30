@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codex Company Web Form</title>
+    <!-- You can link your CSS styles here if needed -->
+    <style>
+        /* Add your styles here */
+        /* Reset some default styles */
+body, h1, form {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  padding: 20px;
+}
+
+form {
+  max-width: 600px;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  display: block;
+  margin: 10px 0;
+  color: #555;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+
+
+
+    </style>
+</head>
+<body>
+
+
+<h1>Codex Company</h1>
+
+<form action="/submit_form" method="post">
+    <label for="name">UserName:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="password">Password</label>
+    <input type ="password" id="password"  name="password" rows="4" required></textarea>
+    <a href="page1.html">
+    <button type="submit" id='sinUp' name="signup_submit" value ="sinup" href ='page1.html'>Submit
+    <a href="page1.html">.</a>
+    </button>
+    
+</form>
+
+
+
+</body>
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getDatabase } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyAQ7qzbWREi9crG1phYbNlbKUzAIvPKRsE",
+      authDomain: "web-form-b5f7c.firebaseapp.com",
+      databaseURL: "https://web-form-b5f7c-default-rtdb.firebaseio.com",
+      projectId: "web-form-b5f7c",
+      storageBucket: "web-form-b5f7c.appspot.com",
+      messagingSenderId: "965759611896",
+      appId: "1:965759611896:web:af5884eef4bd1bfaa59c0d"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+    const auth = getAuth();
+
+   
+    sinUp.addEventListner('click',(e)=> {
+
+        var UserName = document.getElementById("name").value;
+        var Email = document.getElementById("email").value;
+        var Password = document.getElementById("password").value;
+
+        // const auth = getAuth();
+        createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            // Signed up 
+            const user = userCredential.user;
+            alert("can re direct next page")
+            // ...
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+
+            alert(errorMessage);
+            // ..
+        });  
+    });  
+</script>
+</html>
